@@ -13,6 +13,7 @@ class ERCurrenciesViewController: UIViewController {
     let kCurrenciesFile = "currencies"
     let kJsonType = "json"
     let kCurrenciesSelectedNotification = "CurrenciesSelected"
+    let kPairOfCurrencies = 2
 
     @IBOutlet var tableView: UITableView!
     var currenciesArray: [String]?
@@ -35,8 +36,14 @@ class ERCurrenciesViewController: UIViewController {
         super.viewWillAppear(true)
         
         arrayFromFileManager.getArrayForFile(kCurrenciesFile, type: kJsonType) { (value, error) in
-            self.currenciesArray = value as? [String]
-            self.tableView.reloadData()
+            if value != nil {
+                self.currenciesArray = value as? [String]
+                self.tableView.reloadData()
+            } else {
+                self.dismiss(animated: true, completion: nil)
+                print(error as Any)
+            }
+            
         }
     }
     
@@ -68,10 +75,10 @@ extension ERCurrenciesViewController: UITableViewDelegate {
         guard let cell = tableView.cellForRow(at: indexPath) else { return }
         cell.isUserInteractionEnabled = false
         
-        if numberOfRowsSelected < 2 {
+        if numberOfRowsSelected < kPairOfCurrencies {
             numberOfRowsSelected += 1
             currencyPair = currencyPair + self.currenciesArray![indexPath.row]
-            if numberOfRowsSelected >= 2 {
+            if numberOfRowsSelected >= kPairOfCurrencies {
                 if let presenter = presentingViewController as? ERInitialViewController {
                     presenter.currencyPair = currencyPair
                 }
