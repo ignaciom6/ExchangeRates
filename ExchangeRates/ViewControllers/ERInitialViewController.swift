@@ -9,14 +9,20 @@
 import UIKit
 
 class ERInitialViewController: UIViewController {
+    
+    let kCurrenciesSelectedNotification = "CurrenciesSelected"
+    var currencyPair: String = ""
 
-    override func viewDidLoad() {
+    override func viewDidLoad()
+    {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-    }
-
-    @IBAction func addCurrencyPressed(_ sender: Any) {
         
+        NotificationCenter.default.addObserver(self, selector: #selector(self.requestCurrencyExchange), name:NSNotification.Name(rawValue: kCurrenciesSelectedNotification), object: nil)
+    }
+    
+    @objc func requestCurrencyExchange()
+    {
+        print(currencyPair)
     }
     
 }
