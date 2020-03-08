@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  ERInitialViewController.swift
 //  ExchangeRates
 //
 //  Created by Ignacio on 07/03/2020.
@@ -8,13 +8,15 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ERInitialViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
 
-
+    @IBAction func addCurrencyPressed(_ sender: Any) {
+        
+    }
+    
 }
-
