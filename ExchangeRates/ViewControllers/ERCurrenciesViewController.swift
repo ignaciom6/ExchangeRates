@@ -14,6 +14,7 @@ class ERCurrenciesViewController: UIViewController {
     let kJsonType = "json"
     let kCurrenciesSelectedNotification = "CurrenciesSelected"
     let kPairOfCurrencies = 2
+    let kCurrencyPair = "currencyPair"
 
     @IBOutlet var tableView: UITableView!
     var currenciesArray: [String]?
@@ -79,10 +80,8 @@ extension ERCurrenciesViewController: UITableViewDelegate {
             numberOfRowsSelected += 1
             currencyPair = currencyPair + self.currenciesArray![indexPath.row]
             if numberOfRowsSelected >= kPairOfCurrencies {
-                if let presenter = presentingViewController as? ERInitialViewController {
-                    presenter.currencyPair = currencyPair
-                }
-                NotificationCenter.default.post(name: NSNotification.Name(rawValue: kCurrenciesSelectedNotification), object: nil)
+                let currencyDict:[String: String] = [kCurrencyPair: currencyPair]
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: kCurrenciesSelectedNotification), object: nil, userInfo: currencyDict)
                 dismiss(animated: true, completion: nil)
             }
         }
