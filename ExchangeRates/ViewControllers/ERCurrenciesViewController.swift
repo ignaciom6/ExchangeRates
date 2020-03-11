@@ -17,7 +17,7 @@ class ERCurrenciesViewController: UIViewController {
     let kCurrencyPair = "currencyPair"
 
     @IBOutlet var tableView: UITableView!
-    var currenciesArray: [String]?
+    var currenciesArray: [String] = []
     var numberOfRowsSelected = 0
     var currencyPair = ""
     let arrayFromFileManager = ERArrayFromFileManager()
@@ -38,7 +38,7 @@ class ERCurrenciesViewController: UIViewController {
         
         arrayFromFileManager.getArrayForFile(kCurrenciesFile, type: kJsonType) { (value, error) in
             if value != nil {
-                self.currenciesArray = value as? [String]
+                self.currenciesArray = value as! [String]
                 self.tableView.reloadData()
             } else {
                 self.dismiss(animated: true, completion: nil)
@@ -54,14 +54,14 @@ extension ERCurrenciesViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        self.currenciesArray!.count
+        self.currenciesArray.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
         let cell = tableView.dequeueReusableCell(withIdentifier: "currencyCell") as? ERCurrencyTableViewCell
         
-        let currencyCode = self.currenciesArray![indexPath.row]
+        let currencyCode = self.currenciesArray[indexPath.row]
         cell?.currencyLabel.text = currencyCode
         cell?.currencyDetailedLabel.text = ERCurrencyUtils.getCurrencyName(forCurrencyCode: currencyCode)
         
@@ -78,7 +78,7 @@ extension ERCurrenciesViewController: UITableViewDelegate {
         
         if numberOfRowsSelected < kPairOfCurrencies {
             numberOfRowsSelected += 1
-            currencyPair = currencyPair + self.currenciesArray![indexPath.row]
+            currencyPair = currencyPair + self.currenciesArray[indexPath.row]
             if numberOfRowsSelected >= kPairOfCurrencies {
                 let currencyDict:[String: String] = [kCurrencyPair: currencyPair]
                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: kCurrenciesSelectedNotification), object: nil, userInfo: currencyDict)
