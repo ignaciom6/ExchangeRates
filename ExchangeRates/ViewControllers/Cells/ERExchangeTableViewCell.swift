@@ -10,6 +10,12 @@ import UIKit
 
 class ERExchangeTableViewCell: UITableViewCell {
 
+    @IBOutlet var currencyLabel: UILabel!
+    @IBOutlet var currencyDescriptionLabel: UILabel!
+    @IBOutlet var exchangeValueLabel: UILabel!
+    @IBOutlet var exchangeValueDescriptionLabel: UILabel!
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

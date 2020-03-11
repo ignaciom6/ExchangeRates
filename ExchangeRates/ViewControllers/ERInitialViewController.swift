@@ -12,6 +12,7 @@ class ERInitialViewController: UIViewController {
     
     let kCurrenciesPairs = "currenciesPairs"
     let kCurrencyPair = "currencyPair"
+    let kInitialViewToExchangeListSegue = "InitialViewToExchangeListSegue"
 
     let kCurrenciesSelectedNotification = "CurrenciesSelected"
     var currencyPair: String = ""
@@ -31,7 +32,7 @@ class ERInitialViewController: UIViewController {
         navigationController?.setNavigationBarHidden(true, animated: animated)
         
         if currencyPairArray.count > 0 {
-            performSegue(withIdentifier: "InitialViewToExchangeListSegue", sender: nil)
+            performSegue(withIdentifier: kInitialViewToExchangeListSegue, sender: nil)
         }
     }
     
