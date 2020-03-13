@@ -20,8 +20,6 @@ class ERCurrencyExchangeManager: NSObject {
                     let exchange = ERExchangeModel(dictionary: currencyDict)
                     exchangeArray.append(exchange)
                 }
-                
-                print(exchangeArray.count)
                 completion(exchangeArray, nil)
             } else {
                 completion(nil, error!)
