@@ -64,6 +64,7 @@ extension ERCurrenciesViewController: UITableViewDataSource {
         let currencyCode = self.currenciesArray[indexPath.row]
         cell?.currencyLabel.text = currencyCode
         cell?.currencyDetailedLabel.text = ERCurrencyUtils.getCurrencyName(forCurrencyCode: currencyCode)
+        cell?.currencyFlagImg.image = UIImage(named: currencyCode)
         
         return cell!
     }
