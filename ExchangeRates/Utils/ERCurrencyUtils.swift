@@ -14,14 +14,5 @@ class ERCurrencyUtils: NSObject {
         let locale = NSLocale(localeIdentifier: code)
         return locale.localizedString(forCurrencyCode: code)
     }
-    
-//    class func getFlag(forCurrencyCode code: String) -> String {
-//
-//        let locale = NSLocale(localeIdentifier: code)
-//        let country = locale.countryCode
-//
-//        return country
-//
-//    }
 
 }
