@@ -22,8 +22,6 @@ class ERInitialViewController: UIViewController {
     {
         super.viewDidLoad()
         
-        currencyPairArray = UserDefaults.standard.array(forKey: kCurrenciesPairs) ?? []
-        
         NotificationCenter.default.addObserver(self, selector: #selector(self.requestCurrencyExchange), name:NSNotification.Name(rawValue: kCurrenciesSelectedNotification), object: nil)
     }
     
@@ -31,9 +29,15 @@ class ERInitialViewController: UIViewController {
         super.viewWillAppear(true)
         navigationController?.setNavigationBarHidden(true, animated: animated)
         
+        currencyPairArray = UserDefaults.standard.array(forKey: kCurrenciesPairs) ?? []
+        
         if currencyPairArray.count > 0 {
             performSegue(withIdentifier: kInitialViewToExchangeListSegue, sender: nil)
         }
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        NotificationCenter.default.removeObserver(self)
     }
     
     @objc func requestCurrencyExchange(_ notification: NSNotification)
@@ -42,18 +46,9 @@ class ERInitialViewController: UIViewController {
             currencyPairArray.append(pair)
             UserDefaults.standard.set(currencyPairArray, forKey: kCurrenciesPairs)
 
-            print("Request with pairs: ")
-            print(currencyPairArray)
-        
-            print("///////////////////")
-
             performSegue(withIdentifier: "InitialViewToExchangeListSegue", sender: nil)
 
         }
-        
-        
-        
-        
         
     }
     
