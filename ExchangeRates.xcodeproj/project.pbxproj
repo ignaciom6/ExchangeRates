@@ -20,6 +20,7 @@
 		4F1B7F36241D175F00F17BF6 /* ERExchangeListViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F1B7F35241D175F00F17BF6 /* ERExchangeListViewControllerTests.swift */; };
 		4F1B7F38241D1AD200F17BF6 /* ERServiceUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F1B7F37241D1AD100F17BF6 /* ERServiceUtils.swift */; };
 		4F1B7F3A241D1CEF00F17BF6 /* ERConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F1B7F39241D1CEF00F17BF6 /* ERConstants.swift */; };
+		4F1B7F3C241D217200F17BF6 /* ERCurrencyExchangeServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F1B7F3B241D217200F17BF6 /* ERCurrencyExchangeServiceTests.swift */; };
 		4F770A4E2413D825004BC9C1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F770A4D2413D825004BC9C1 /* AppDelegate.swift */; };
 		4F770A552413D825004BC9C1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F770A532413D825004BC9C1 /* Main.storyboard */; };
 		4F770A572413D82A004BC9C1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F770A562413D82A004BC9C1 /* Assets.xcassets */; };
@@ -53,6 +54,7 @@
 		4F1B7F35241D175F00F17BF6 /* ERExchangeListViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ERExchangeListViewControllerTests.swift; sourceTree = "<group>"; };
 		4F1B7F37241D1AD100F17BF6 /* ERServiceUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ERServiceUtils.swift; sourceTree = "<group>"; };
 		4F1B7F39241D1CEF00F17BF6 /* ERConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ERConstants.swift; sourceTree = "<group>"; };
+		4F1B7F3B241D217200F17BF6 /* ERCurrencyExchangeServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ERCurrencyExchangeServiceTests.swift; sourceTree = "<group>"; };
 		4F770A4A2413D825004BC9C1 /* ExchangeRates.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExchangeRates.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F770A4D2413D825004BC9C1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4F770A542413D825004BC9C1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -135,6 +137,7 @@
 			children = (
 				4F1B7F33241D0F2C00F17BF6 /* ERCurrenciesViewControllerTests.swift */,
 				4F1B7F35241D175F00F17BF6 /* ERExchangeListViewControllerTests.swift */,
+				4F1B7F3B241D217200F17BF6 /* ERCurrencyExchangeServiceTests.swift */,
 				4F770A662413D82A004BC9C1 /* Info.plist */,
 			);
 			path = ExchangeRatesTests;
@@ -309,6 +312,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F1B7F3C241D217200F17BF6 /* ERCurrencyExchangeServiceTests.swift in Sources */,
 				4F1B7F36241D175F00F17BF6 /* ERExchangeListViewControllerTests.swift in Sources */,
 				4F1B7F34241D0F2C00F17BF6 /* ERCurrenciesViewControllerTests.swift in Sources */,
 			);
