@@ -31,8 +31,6 @@ class ERLocalFileService: NSObject {
             ])
             completion(nil, error)
         }
-
-
     }
 
 }

@@ -26,7 +26,6 @@ class ERCurrencyExchangeService: NSObject {
             }
         }
         session.resume()
-        
     }
 
 }
