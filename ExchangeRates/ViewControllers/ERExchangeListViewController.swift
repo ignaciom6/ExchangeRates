@@ -9,10 +9,6 @@
 import UIKit
 
 class ERExchangeListViewController: UIViewController {
-    let kCurrenciesPairs = "currenciesPairs"
-    let urlComponents = NSURLComponents(string: "https://europe-west1-revolut-230009.cloudfunctions.net/revolut-ios")
-    let kCurrencyPair = "currencyPair"
-    let kCurrenciesSelectedNotification = "CurrenciesSelected"
 
     @IBOutlet var tableView: UITableView!
     var timer = Timer()
@@ -26,9 +22,9 @@ class ERExchangeListViewController: UIViewController {
         tableView.dataSource = self
         tableView.tableFooterView = UIView()
         
-        requestExchangeRatesWithInterval()
+        NotificationCenter.default.addObserver(self, selector: #selector(self.updateArrayOfExchanges), name:NSNotification.Name(rawValue: ERConstants.kCurrenciesSelectedNotification), object: nil)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(self.updateArrayOfExchanges), name:NSNotification.Name(rawValue: kCurrenciesSelectedNotification), object: nil)
+        requestExchangeRatesWithInterval()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -40,12 +36,11 @@ class ERExchangeListViewController: UIViewController {
     
     @objc func updateArrayOfExchanges(_ notification: NSNotification)
     {
-        if let pair = notification.userInfo?[kCurrencyPair] as? String {
-            var currencyPairArray = UserDefaults.standard.array(forKey: kCurrenciesPairs) ?? []
+        if let pair = notification.userInfo?[ERConstants.kCurrencyPair] as? String {
+            var currencyPairArray = UserDefaults.standard.array(forKey: ERConstants.kCurrenciesPairs) ?? []
             currencyPairArray.append(pair)
-            UserDefaults.standard.set(currencyPairArray, forKey: kCurrenciesPairs)
+            UserDefaults.standard.set(currencyPairArray, forKey: ERConstants.kCurrenciesPairs)
         }
-        
     }
     
     func requestExchangeRatesWithInterval()
@@ -55,16 +50,7 @@ class ERExchangeListViewController: UIViewController {
     
     @objc func requestExchangeRates()
     {
-        let currencyPairArray = UserDefaults.standard.array(forKey: kCurrenciesPairs) ?? []
-        var queryItems: [URLQueryItem] = []
-        
-        for pair in currencyPairArray {
-            let queryItem = NSURLQueryItem(name: "pairs", value: pair as? String) as URLQueryItem
-            queryItems.append(queryItem)
-        }
-        urlComponents?.queryItems = queryItems
-        
-        currencyExchangeManager.getCurrencyExchange((urlComponents?.url)!) { (value, error) in
+        currencyExchangeManager.getCurrencyExchange(ERServiceUtils.getPairsUrl()) { (value, error) in
             self.exchangeArray = value!
             
             self.exchangeArray.sort {
@@ -100,7 +86,7 @@ extension ERExchangeListViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "exchangeCell") as? ERExchangeTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: ERConstants.kExchangeCell) as? ERExchangeTableViewCell
         
         let exchange = self.exchangeArray[indexPath.row]
         cell?.currencyLabel.text = exchange.currency
@@ -131,12 +117,12 @@ extension ERExchangeListViewController: UITableViewDataSource {
             
             self.exchangeArray.remove(at: indexPath.row)
             
-            currencyPairArray = UserDefaults.standard.array(forKey: kCurrenciesPairs) as! [String]
+            currencyPairArray = UserDefaults.standard.array(forKey: ERConstants.kCurrenciesPairs) as! [String]
             if let index = currencyPairArray.firstIndex(of: exchangePair) {
                 currencyPairArray.remove(at: index)
             }
             
-            UserDefaults.standard.set(currencyPairArray, forKey: kCurrenciesPairs)
+            UserDefaults.standard.set(currencyPairArray, forKey: ERConstants.kCurrenciesPairs)
             if currencyPairArray.count == 0 {
                 navigationController?.popToRootViewController(animated: true)
             }

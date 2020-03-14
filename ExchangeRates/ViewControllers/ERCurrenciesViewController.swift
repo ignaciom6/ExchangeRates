@@ -9,12 +9,6 @@
 import UIKit
 
 class ERCurrenciesViewController: UIViewController {
-    
-    let kCurrenciesFile = "currencies"
-    let kJsonType = "json"
-    let kCurrenciesSelectedNotification = "CurrenciesSelected"
-    let kPairOfCurrencies = 2
-    let kCurrencyPair = "currencyPair"
 
     @IBOutlet var tableView: UITableView!
     var currenciesArray: [String] = []
@@ -36,7 +30,7 @@ class ERCurrenciesViewController: UIViewController {
     {
         super.viewWillAppear(true)
         
-        arrayFromFileManager.getArrayForFile(kCurrenciesFile, type: kJsonType) { (value, error) in
+        arrayFromFileManager.getArrayForFile(ERConstants.kCurrenciesFile, type: ERConstants.kJsonType) { (value, error) in
             if value != nil {
                 self.currenciesArray = value as! [String]
                 self.tableView.reloadData()
@@ -59,7 +53,7 @@ extension ERCurrenciesViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "currencyCell") as? ERCurrencyTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: ERConstants.kCurrencyCell) as? ERCurrencyTableViewCell
         
         let currencyCode = self.currenciesArray[indexPath.row]
         cell?.currencyLabel.text = currencyCode
@@ -77,12 +71,12 @@ extension ERCurrenciesViewController: UITableViewDelegate {
         guard let cell = tableView.cellForRow(at: indexPath) else { return }
         cell.isUserInteractionEnabled = false
         
-        if numberOfRowsSelected < kPairOfCurrencies {
+        if numberOfRowsSelected < ERConstants.kPairOfCurrencies {
             numberOfRowsSelected += 1
             currencyPair = currencyPair + self.currenciesArray[indexPath.row]
-            if numberOfRowsSelected >= kPairOfCurrencies {
-                let currencyDict:[String: String] = [kCurrencyPair: currencyPair]
-                NotificationCenter.default.post(name: NSNotification.Name(rawValue: kCurrenciesSelectedNotification), object: nil, userInfo: currencyDict)
+            if numberOfRowsSelected >= ERConstants.kPairOfCurrencies {
+                let currencyDict:[String: String] = [ERConstants.kCurrencyPair: currencyPair]
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: ERConstants.kCurrenciesSelectedNotification), object: nil, userInfo: currencyDict)
                 dismiss(animated: true, completion: nil)
             }
         }

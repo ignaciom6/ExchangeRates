@@ -10,11 +10,6 @@ import UIKit
 
 class ERInitialViewController: UIViewController {
     
-    let kCurrenciesPairs = "currenciesPairs"
-    let kCurrencyPair = "currencyPair"
-    let kInitialViewToExchangeListSegue = "InitialViewToExchangeListSegue"
-
-    let kCurrenciesSelectedNotification = "CurrenciesSelected"
     var currencyPair: String = ""
     var currencyPairArray: [Any] = []
 
@@ -22,17 +17,17 @@ class ERInitialViewController: UIViewController {
     {
         super.viewDidLoad()
         
-        NotificationCenter.default.addObserver(self, selector: #selector(self.requestCurrencyExchange), name:NSNotification.Name(rawValue: kCurrenciesSelectedNotification), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.requestCurrencyExchange), name:NSNotification.Name(rawValue: ERConstants.kCurrenciesSelectedNotification), object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         navigationController?.setNavigationBarHidden(true, animated: animated)
         
-        currencyPairArray = UserDefaults.standard.array(forKey: kCurrenciesPairs) ?? []
+        currencyPairArray = UserDefaults.standard.array(forKey: ERConstants.kCurrenciesPairs) ?? []
         
         if currencyPairArray.count > 0 {
-            performSegue(withIdentifier: kInitialViewToExchangeListSegue, sender: nil)
+            performSegue(withIdentifier: ERConstants.kInitialViewToExchangeListSegue, sender: nil)
         }
     }
     
@@ -42,11 +37,11 @@ class ERInitialViewController: UIViewController {
     
     @objc func requestCurrencyExchange(_ notification: NSNotification)
     {
-        if let pair = notification.userInfo?[kCurrencyPair] as? String {
+        if let pair = notification.userInfo?[ERConstants.kCurrencyPair] as? String {
             currencyPairArray.append(pair)
-            UserDefaults.standard.set(currencyPairArray, forKey: kCurrenciesPairs)
+            UserDefaults.standard.set(currencyPairArray, forKey: ERConstants.kCurrenciesPairs)
 
-            performSegue(withIdentifier: "InitialViewToExchangeListSegue", sender: nil)
+            performSegue(withIdentifier: ERConstants.kInitialViewToExchangeListSegue, sender: nil)
 
         }
         

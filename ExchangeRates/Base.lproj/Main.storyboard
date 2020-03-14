@@ -78,7 +78,7 @@
         <!--Currencies View Controller-->
         <scene sceneID="ozD-UD-CWw">
             <objects>
-                <viewController id="qct-vH-6Q1" customClass="ERCurrenciesViewController" customModule="ExchangeRates" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CurrenciesViewController" id="qct-vH-6Q1" customClass="ERCurrenciesViewController" customModule="ExchangeRates" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dTn-uh-gpw">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -160,7 +160,7 @@
         <!--Exchange List View Controller-->
         <scene sceneID="fYp-CV-uEX">
             <objects>
-                <viewController id="iKe-zh-M6H" customClass="ERExchangeListViewController" customModule="ExchangeRates" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ExchangeViewController" id="iKe-zh-M6H" customClass="ERExchangeListViewController" customModule="ExchangeRates" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4Wj-nS-gTD">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -340,6 +340,6 @@
         <image name="addIcon" width="40" height="40"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="hsG-Xh-d3E"/>
+        <segue reference="uem-qi-ckL"/>
     </inferredMetricsTieBreakers>
 </document>
