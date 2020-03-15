@@ -84,6 +84,7 @@ extension ERCurrenciesViewController: UITableViewDelegate {
                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: ERConstants.kCurrenciesSelectedNotification), object: nil, userInfo: currencyDict)
                 dismiss(animated: true, completion: nil)
             }
+            
         }
     }
 }
