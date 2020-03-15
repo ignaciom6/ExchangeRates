@@ -28,6 +28,7 @@
 		4F770A742413D931004BC9C1 /* ERInitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F770A732413D931004BC9C1 /* ERInitialViewController.swift */; };
 		4F770A7624152D3E004BC9C1 /* ERCurrenciesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F770A7524152D3E004BC9C1 /* ERCurrenciesViewController.swift */; };
 		4F770A7924152EC7004BC9C1 /* ERCurrencyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F770A7824152EC7004BC9C1 /* ERCurrencyTableViewCell.swift */; };
+		4FA562AC241DB5B800BF1926 /* ERSpinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FA562AB241DB5B800BF1926 /* ERSpinner.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +67,7 @@
 		4F770A732413D931004BC9C1 /* ERInitialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ERInitialViewController.swift; sourceTree = "<group>"; };
 		4F770A7524152D3E004BC9C1 /* ERCurrenciesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ERCurrenciesViewController.swift; sourceTree = "<group>"; };
 		4F770A7824152EC7004BC9C1 /* ERCurrencyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ERCurrencyTableViewCell.swift; sourceTree = "<group>"; };
+		4FA562AB241DB5B800BF1926 /* ERSpinner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ERSpinner.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +94,7 @@
 				4F1B7F2724157AA900F17BF6 /* ERCurrencyUtils.swift */,
 				4F1B7F37241D1AD100F17BF6 /* ERServiceUtils.swift */,
 				4F1B7F39241D1CEF00F17BF6 /* ERConstants.swift */,
+				4FA562AB241DB5B800BF1926 /* ERSpinner.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -295,6 +298,7 @@
 				4F770A7624152D3E004BC9C1 /* ERCurrenciesViewController.swift in Sources */,
 				4F1B7F2A24173F4600F17BF6 /* ERExchangeListViewController.swift in Sources */,
 				4F1B7F2824157AA900F17BF6 /* ERCurrencyUtils.swift in Sources */,
+				4FA562AC241DB5B800BF1926 /* ERSpinner.swift in Sources */,
 				4F1B7F3024199DEA00F17BF6 /* ERCurrencyExchangeService.swift in Sources */,
 				4F1B7F38241D1AD200F17BF6 /* ERServiceUtils.swift in Sources */,
 				4F1B7F2E24199C8600F17BF6 /* ERCurrencyExchangeManager.swift in Sources */,
@@ -467,6 +471,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 3D23847FTP;
 				INFOPLIST_FILE = ExchangeRates/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -485,6 +490,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 3D23847FTP;
 				INFOPLIST_FILE = ExchangeRates/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (

@@ -21,10 +21,17 @@ class ERExchangeListViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.tableFooterView = UIView()
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(self.updateArrayOfExchanges), name:NSNotification.Name(rawValue: ERConstants.kCurrenciesSelectedNotification), object: nil)
+        tableView.allowsSelection = false
         
         requestExchangeRatesWithInterval()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        
+        self.showSpinner()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.updateArrayOfExchanges), name:NSNotification.Name(rawValue: ERConstants.kCurrenciesSelectedNotification), object: nil)
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -36,6 +43,10 @@ class ERExchangeListViewController: UIViewController {
     
     @objc func updateArrayOfExchanges(_ notification: NSNotification)
     {
+        DispatchQueue.main.async {
+            self.showSpinner()
+        }
+        
         if let pair = notification.userInfo?[ERConstants.kCurrencyPair] as? String {
             var currencyPairArray = UserDefaults.standard.array(forKey: ERConstants.kCurrenciesPairs) ?? []
             currencyPairArray.append(pair)
@@ -51,26 +62,31 @@ class ERExchangeListViewController: UIViewController {
     @objc func requestExchangeRates()
     {
         currencyExchangeManager.getCurrencyExchange(ERServiceUtils.getPairsUrl()) { (value, error) in
-            self.exchangeArray = value!
-            
-            self.exchangeArray.sort {
-                $0.currency! < $1.currency!
+            if value != nil {
+                self.exchangeArray = value!
+                self.exchangeArray.sort {
+                    $0.currency!+$0.exchange! < $1.currency!+$1.exchange!
+                }
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
+            } else {
+                self.timer.invalidate()
+                
+                DispatchQueue.main.async {
+                    let alert = UIAlertController(title: "❗️", message: error?.localizedDescription ?? "", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "Retry", style: .default, handler: { action in
+                        self.showSpinner()
+                        self.requestExchangeRatesWithInterval()
+                    }))
+                    self.present(alert, animated: true)
+                }
             }
-            
             DispatchQueue.main.async {
-                self.tableView.reloadData()
+                self.hideSpinner()
             }
         }
     }
-    
-    func setAttributeTextForString(value: String) -> NSMutableAttributedString {
-        let exchangeValueText = NSMutableAttributedString.init(string: value)
-        
-        exchangeValueText.setAttributes([NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 17)], range: NSMakeRange(value.length-2, 2))
-
-        return exchangeValueText
-    }
-    
 }
 
 extension ERExchangeListViewController: UITableViewDataSource {
@@ -91,7 +107,7 @@ extension ERExchangeListViewController: UITableViewDataSource {
         let exchange = self.exchangeArray[indexPath.row]
         cell?.currencyLabel.text = exchange.currency
         cell?.currencyDescriptionLabel.text = exchange.currencyDetail
-        cell?.exchangeValueLabel.attributedText = setAttributeTextForString(value: String(format:"%.4f", exchange.exchangeValue!))
+        cell?.exchangeValueLabel.attributedText = ERCurrencyUtils.setAttributeTextForString(value: String(format:"%.4f", exchange.exchangeValue!))
         cell?.exchangeValueDescriptionLabel.text = exchange.exchangeCurrencyDetail
         
         return cell!
@@ -111,6 +127,7 @@ extension ERExchangeListViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
+            self.showSpinner()
             let exchange = self.exchangeArray[indexPath.row]
             let exchangePair = exchange.currency! + exchange.exchange!
             var currencyPairArray: [String] = []

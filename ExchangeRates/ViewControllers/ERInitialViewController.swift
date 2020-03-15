@@ -16,13 +16,13 @@ class ERInitialViewController: UIViewController {
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(self.requestCurrencyExchange), name:NSNotification.Name(rawValue: ERConstants.kCurrenciesSelectedNotification), object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         navigationController?.setNavigationBarHidden(true, animated: animated)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.requestCurrencyExchange), name:NSNotification.Name(rawValue: ERConstants.kCurrenciesSelectedNotification), object: nil)
         
         currencyPairArray = UserDefaults.standard.array(forKey: ERConstants.kCurrenciesPairs) ?? []
         
@@ -42,7 +42,6 @@ class ERInitialViewController: UIViewController {
             UserDefaults.standard.set(currencyPairArray, forKey: ERConstants.kCurrenciesPairs)
 
             performSegue(withIdentifier: ERConstants.kInitialViewToExchangeListSegue, sender: nil)
-
         }
         
     }
