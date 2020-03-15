@@ -10,6 +10,9 @@ import UIKit
 
 class ERLocalFileService: NSObject {
     
+    let kLocalFileServiceDomain = "ERLocalFileService"
+    let kRetrieveFileError = "Could not retrieve file"
+    
     func getDataFromFile(_ file: String?, type format: String?, withCompletion completion: @escaping (_ value: [AnyHashable]?, _ error: Error?) -> Void) {
         let path = Bundle.main.path(forResource: file, ofType: format)
         let data = NSData(contentsOfFile: path ?? "") as Data?
@@ -22,12 +25,12 @@ class ERLocalFileService: NSObject {
                     currenciesArray = try JSONSerialization.jsonObject(with: data, options: []) as? [String]
                 }
             } catch {
-                err = NSError(domain: "ERLocalFileService", code: -1, userInfo: ["error": "Could not retrieve file"])
+                err = NSError(domain: kLocalFileServiceDomain, code: -1, userInfo: [ERConstants.kErrorString: kRetrieveFileError])
             }
             completion(currenciesArray, err)
         } else {
-            let error = NSError(domain: "ERLocalFileService", code: -1, userInfo: [
-                "error": "Could not retrieve file"
+            let error = NSError(domain: kLocalFileServiceDomain, code: -1, userInfo: [
+                ERConstants.kErrorString: kRetrieveFileError
             ])
             completion(nil, error)
         }

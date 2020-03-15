@@ -48,9 +48,11 @@ class ERExchangeListViewController: UIViewController {
         }
         
         if let pair = notification.userInfo?[ERConstants.kCurrencyPair] as? String {
-            var currencyPairArray = UserDefaults.standard.array(forKey: ERConstants.kCurrenciesPairs) ?? []
-            currencyPairArray.append(pair)
-            UserDefaults.standard.set(currencyPairArray, forKey: ERConstants.kCurrenciesPairs)
+            var currencyPairArray: [String] = UserDefaults.standard.array(forKey: ERConstants.kCurrenciesPairs) as! [String]
+            if !currencyPairArray.contains(pair) {
+                currencyPairArray.append(pair)
+                UserDefaults.standard.set(currencyPairArray, forKey: ERConstants.kCurrenciesPairs)
+            }
         }
     }
     
@@ -127,7 +129,6 @@ extension ERExchangeListViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            self.showSpinner()
             let exchange = self.exchangeArray[indexPath.row]
             let exchangePair = exchange.currency! + exchange.exchange!
             var currencyPairArray: [String] = []
@@ -138,6 +139,8 @@ extension ERExchangeListViewController: UITableViewDataSource {
             if let index = currencyPairArray.firstIndex(of: exchangePair) {
                 currencyPairArray.remove(at: index)
             }
+            
+            tableView.deleteRows(at: [indexPath], with: UITableView.RowAnimation.automatic)
             
             UserDefaults.standard.set(currencyPairArray, forKey: ERConstants.kCurrenciesPairs)
             if currencyPairArray.count == 0 {

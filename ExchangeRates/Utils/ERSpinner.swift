@@ -14,7 +14,18 @@ extension UIViewController {
     func showSpinner() {
         aView = UIView(frame: self.view.bounds)
         
-        let activityIndicator = UIActivityIndicatorView(style: .gray)
+        var activityIndicator: UIActivityIndicatorView!
+        
+        switch traitCollection.userInterfaceStyle {
+        case .light:
+            activityIndicator = UIActivityIndicatorView(style: .gray)
+        case .dark:
+            activityIndicator = UIActivityIndicatorView(style: .white)
+        case .unspecified: break
+        @unknown default:
+            break
+        }
+
         activityIndicator.center = view.center
         activityIndicator.startAnimating()
         aView?.addSubview(activityIndicator)

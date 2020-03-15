@@ -18,4 +18,5 @@ struct ERConstants {
     static let kPairOfCurrencies = 2
     static let kCurrencyCell = "currencyCell"
     static let kExchangeCell = "exchangeCell"
+    static let kErrorString = "error"
 }
