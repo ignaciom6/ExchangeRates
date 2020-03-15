@@ -32,6 +32,8 @@ class ERInitialViewController: UIViewController {
     }
     
     override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(true)
+        
         NotificationCenter.default.removeObserver(self)
     }
     

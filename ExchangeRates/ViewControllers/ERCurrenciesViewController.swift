@@ -35,10 +35,15 @@ class ERCurrenciesViewController: UIViewController {
                 self.currenciesArray = value as! [String]
                 self.tableView.reloadData()
             } else {
-                self.dismiss(animated: true, completion: nil)
-                print(error as Any)
+                DispatchQueue.main.async {
+                    let errorStr = (error! as NSError).userInfo["error"] as! String
+                    let alert = UIAlertController(title: "❗️", message: errorStr, preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
+                        self.dismiss(animated: true, completion: nil)
+                    }))
+                    self.present(alert, animated: true)
+                }
             }
-            
         }
     }
     
