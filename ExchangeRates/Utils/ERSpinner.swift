@@ -34,5 +34,6 @@ extension UIViewController {
     
     func hideSpinner() {
         aView?.removeFromSuperview()
+        aView = nil
     }
 }
