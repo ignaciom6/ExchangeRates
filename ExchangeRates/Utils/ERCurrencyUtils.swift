@@ -22,5 +22,21 @@ class ERCurrencyUtils: NSObject {
 
         return exchangeValueText
     }
+    
+    class func updateCurrencies(pair: String) {
+        var currencyPairArray: [String] = UserDefaults.standard.array(forKey: ERConstants.kCurrenciesPairs) as! [String]
+        if !currencyPairArray.contains(pair) {
+            currencyPairArray.append(pair)
+            UserDefaults.standard.set(currencyPairArray, forKey: ERConstants.kCurrenciesPairs)
+        }
+    }
+    
+    class func sortExchangeModelArray(array: [ERExchangeModel]) -> Array<ERExchangeModel> {
+        var sortedArray = array
+        sortedArray.sort {
+            $0.currency!+$0.exchange! < $1.currency!+$1.exchange!
+        }
+        return sortedArray
+    }
 
 }

@@ -48,11 +48,7 @@ class ERExchangeListViewController: UIViewController {
         }
         
         if let pair = notification.userInfo?[ERConstants.kCurrencyPair] as? String {
-            var currencyPairArray: [String] = UserDefaults.standard.array(forKey: ERConstants.kCurrenciesPairs) as! [String]
-            if !currencyPairArray.contains(pair) {
-                currencyPairArray.append(pair)
-                UserDefaults.standard.set(currencyPairArray, forKey: ERConstants.kCurrenciesPairs)
-            }
+            ERCurrencyUtils.updateCurrencies(pair: pair)
         }
     }
     
@@ -65,10 +61,7 @@ class ERExchangeListViewController: UIViewController {
     {
         currencyExchangeManager.getCurrencyExchange(ERServiceUtils.getPairsUrl()) { (value, error) in
             if value != nil {
-                self.exchangeArray = value!
-                self.exchangeArray.sort {
-                    $0.currency!+$0.exchange! < $1.currency!+$1.exchange!
-                }
+                self.exchangeArray = ERCurrencyUtils.sortExchangeModelArray(array: value!)
                 DispatchQueue.main.async {
                     self.tableView.reloadData()
                 }
