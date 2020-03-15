@@ -122,9 +122,10 @@ extension ERExchangeListViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
+            var currencyPairArray: [String] = []
+
             let exchange = self.exchangeArray[indexPath.row]
             let exchangePair = exchange.currency! + exchange.exchange!
-            var currencyPairArray: [String] = []
             
             self.exchangeArray.remove(at: indexPath.row)
             
