@@ -10,10 +10,12 @@ import UIKit
 
 class ERCurrencyExchangeService: NSObject {
     
+    fileprivate static let session = URLSession(configuration: URLSessionConfiguration.default)
+    
     func getCurrencyExchange(_ url: URL, withCompletion completion: @escaping (_ value: [String : Any]?, _ error: Error?) -> Void) {
         var exchangeDic: [String : Any]?
         
-        let session = URLSession.shared.dataTask(with: url) { (data, response, error) in
+        let task = ERCurrencyExchangeService.session.dataTask(with: url) { (data, response, error) in
             if error == nil {
                 do {
                     exchangeDic = try JSONSerialization.jsonObject(with: data!, options: []) as? [String : Any]
@@ -25,7 +27,7 @@ class ERCurrencyExchangeService: NSObject {
                 completion(nil, error)
             }
         }
-        session.resume()
+        task.resume()
     }
 
 }

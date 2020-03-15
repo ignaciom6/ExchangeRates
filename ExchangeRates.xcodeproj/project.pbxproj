@@ -30,6 +30,7 @@
 		4F770A7924152EC7004BC9C1 /* ERCurrencyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F770A7824152EC7004BC9C1 /* ERCurrencyTableViewCell.swift */; };
 		4FA562AC241DB5B800BF1926 /* ERSpinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FA562AB241DB5B800BF1926 /* ERSpinner.swift */; };
 		4FA562AE241E672700BF1926 /* ERLocalFileServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FA562AD241E672700BF1926 /* ERLocalFileServiceTests.swift */; };
+		4FA562B0241E7C5F00BF1926 /* ERCurrencyExchangeServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FA562AF241E7C5F00BF1926 /* ERCurrencyExchangeServiceTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +71,7 @@
 		4F770A7824152EC7004BC9C1 /* ERCurrencyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ERCurrencyTableViewCell.swift; sourceTree = "<group>"; };
 		4FA562AB241DB5B800BF1926 /* ERSpinner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ERSpinner.swift; sourceTree = "<group>"; };
 		4FA562AD241E672700BF1926 /* ERLocalFileServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ERLocalFileServiceTests.swift; sourceTree = "<group>"; };
+		4FA562AF241E7C5F00BF1926 /* ERCurrencyExchangeServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ERCurrencyExchangeServiceTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,6 +146,7 @@
 				4F1B7F35241D175F00F17BF6 /* ERExchangeListViewControllerTests.swift */,
 				4F1B7F42241D6C1A00F17BF6 /* ERExchangeModelTests.swift */,
 				4FA562AD241E672700BF1926 /* ERLocalFileServiceTests.swift */,
+				4FA562AF241E7C5F00BF1926 /* ERCurrencyExchangeServiceTests.swift */,
 				4F770A662413D82A004BC9C1 /* Info.plist */,
 			);
 			path = ExchangeRatesTests;
@@ -321,6 +324,7 @@
 			files = (
 				4F1B7F36241D175F00F17BF6 /* ERExchangeListViewControllerTests.swift in Sources */,
 				4F1B7F34241D0F2C00F17BF6 /* ERCurrenciesViewControllerTests.swift in Sources */,
+				4FA562B0241E7C5F00BF1926 /* ERCurrencyExchangeServiceTests.swift in Sources */,
 				4FA562AE241E672700BF1926 /* ERLocalFileServiceTests.swift in Sources */,
 				4F1B7F43241D6C1A00F17BF6 /* ERExchangeModelTests.swift in Sources */,
 			);
