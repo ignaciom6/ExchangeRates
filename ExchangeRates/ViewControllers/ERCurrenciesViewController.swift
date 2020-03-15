@@ -73,8 +73,8 @@ extension ERCurrenciesViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
     {
-        guard let cell = tableView.cellForRow(at: indexPath) else { return }
-        cell.isUserInteractionEnabled = false
+        let cell = tableView.cellForRow(at: indexPath)
+        cell!.isUserInteractionEnabled = false
         
         if numberOfRowsSelected < ERConstants.kPairOfCurrencies {
             numberOfRowsSelected += 1
