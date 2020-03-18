@@ -129,14 +129,14 @@ extension ERExchangeListViewController: UITableViewDataSource {
             
             self.exchangeArray.remove(at: indexPath.row)
             
-            currencyPairArray = UserDefaults.standard.array(forKey: ERConstants.kCurrenciesPairs) as! [String]
+            currencyPairArray = ERUserDefaultsUtils.getStoredArray()
             if let index = currencyPairArray.firstIndex(of: exchangePair) {
                 currencyPairArray.remove(at: index)
             }
             
             tableView.deleteRows(at: [indexPath], with: UITableView.RowAnimation.automatic)
             
-            UserDefaults.standard.set(currencyPairArray, forKey: ERConstants.kCurrenciesPairs)
+            ERUserDefaultsUtils.storeArray(currencyArray: currencyPairArray)
             if currencyPairArray.count == 0 {
                 navigationController?.popToRootViewController(animated: true)
             }

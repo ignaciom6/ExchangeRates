@@ -21,6 +21,7 @@
 		4F1B7F38241D1AD200F17BF6 /* ERServiceUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F1B7F37241D1AD100F17BF6 /* ERServiceUtils.swift */; };
 		4F1B7F3A241D1CEF00F17BF6 /* ERConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F1B7F39241D1CEF00F17BF6 /* ERConstants.swift */; };
 		4F1B7F43241D6C1A00F17BF6 /* ERExchangeModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F1B7F42241D6C1A00F17BF6 /* ERExchangeModelTests.swift */; };
+		4F3A038E24229B5D004AC44E /* ERUserDefaultsUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F3A038D24229B5D004AC44E /* ERUserDefaultsUtils.swift */; };
 		4F770A4E2413D825004BC9C1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F770A4D2413D825004BC9C1 /* AppDelegate.swift */; };
 		4F770A552413D825004BC9C1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F770A532413D825004BC9C1 /* Main.storyboard */; };
 		4F770A572413D82A004BC9C1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F770A562413D82A004BC9C1 /* Assets.xcassets */; };
@@ -58,6 +59,7 @@
 		4F1B7F37241D1AD100F17BF6 /* ERServiceUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ERServiceUtils.swift; sourceTree = "<group>"; };
 		4F1B7F39241D1CEF00F17BF6 /* ERConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ERConstants.swift; sourceTree = "<group>"; };
 		4F1B7F42241D6C1A00F17BF6 /* ERExchangeModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ERExchangeModelTests.swift; sourceTree = "<group>"; };
+		4F3A038D24229B5D004AC44E /* ERUserDefaultsUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ERUserDefaultsUtils.swift; sourceTree = "<group>"; };
 		4F770A4A2413D825004BC9C1 /* ExchangeRates.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExchangeRates.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F770A4D2413D825004BC9C1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4F770A542413D825004BC9C1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -99,6 +101,7 @@
 				4F1B7F37241D1AD100F17BF6 /* ERServiceUtils.swift */,
 				4F1B7F39241D1CEF00F17BF6 /* ERConstants.swift */,
 				4FA562AB241DB5B800BF1926 /* ERSpinner.swift */,
+				4F3A038D24229B5D004AC44E /* ERUserDefaultsUtils.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -303,6 +306,7 @@
 				4F1B7F252415376C00F17BF6 /* ERLocalFileService.swift in Sources */,
 				4F770A7624152D3E004BC9C1 /* ERCurrenciesViewController.swift in Sources */,
 				4F1B7F2A24173F4600F17BF6 /* ERExchangeListViewController.swift in Sources */,
+				4F3A038E24229B5D004AC44E /* ERUserDefaultsUtils.swift in Sources */,
 				4F1B7F2824157AA900F17BF6 /* ERCurrencyUtils.swift in Sources */,
 				4FA562AC241DB5B800BF1926 /* ERSpinner.swift in Sources */,
 				4F1B7F3024199DEA00F17BF6 /* ERCurrencyExchangeService.swift in Sources */,

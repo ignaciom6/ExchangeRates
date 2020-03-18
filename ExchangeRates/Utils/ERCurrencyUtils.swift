@@ -24,10 +24,10 @@ class ERCurrencyUtils: NSObject {
     }
     
     class func updateCurrencies(pair: String) {
-        var currencyPairArray: [String] = UserDefaults.standard.array(forKey: ERConstants.kCurrenciesPairs) as! [String]
+        var currencyPairArray: [String] = ERUserDefaultsUtils.getStoredArray()
         if !currencyPairArray.contains(pair) {
             currencyPairArray.append(pair)
-            UserDefaults.standard.set(currencyPairArray, forKey: ERConstants.kCurrenciesPairs)
+            ERUserDefaultsUtils.storeArray(currencyArray: currencyPairArray)
         }
     }
     

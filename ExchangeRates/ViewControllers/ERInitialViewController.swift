@@ -11,7 +11,7 @@ import UIKit
 class ERInitialViewController: UIViewController {
     
     var currencyPair: String = ""
-    var currencyPairArray: [Any] = []
+    var currencyPairArray: [String] = []
 
     override func viewDidLoad()
     {
@@ -24,7 +24,7 @@ class ERInitialViewController: UIViewController {
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.requestCurrencyExchange), name:NSNotification.Name(rawValue: ERConstants.kCurrenciesSelectedNotification), object: nil)
         
-        currencyPairArray = UserDefaults.standard.array(forKey: ERConstants.kCurrenciesPairs) ?? []
+        currencyPairArray = ERUserDefaultsUtils.getStoredArray()
         
         if currencyPairArray.count > 0 {
             performSegue(withIdentifier: ERConstants.kInitialViewToExchangeListSegue, sender: nil)
@@ -41,7 +41,7 @@ class ERInitialViewController: UIViewController {
     {
         if let pair = notification.userInfo?[ERConstants.kCurrencyPair] as? String {
             currencyPairArray.append(pair)
-            UserDefaults.standard.set(currencyPairArray, forKey: ERConstants.kCurrenciesPairs)
+            ERUserDefaultsUtils.storeArray(currencyArray: currencyPairArray)
 
             performSegue(withIdentifier: ERConstants.kInitialViewToExchangeListSegue, sender: nil)
         }

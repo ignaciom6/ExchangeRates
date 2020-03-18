@@ -12,13 +12,12 @@ class ERServiceUtils: NSObject {
 
     class func getPairsUrl() -> URL {
         let urlComponents = NSURLComponents(string: "https://europe-west1-revolut-230009.cloudfunctions.net/revolut-ios")
-        let kCurrenciesPairs = "currenciesPairs"
         
-        let currencyPairArray = UserDefaults.standard.array(forKey: kCurrenciesPairs) ?? []
+        let currencyPairArray = ERUserDefaultsUtils.getStoredArray()
         var queryItems: [URLQueryItem] = []
         
         for pair in currencyPairArray {
-            let queryItem = NSURLQueryItem(name: "pairs", value: pair as? String) as URLQueryItem
+            let queryItem = NSURLQueryItem(name: "pairs", value: pair) as URLQueryItem
             queryItems.append(queryItem)
         }
         urlComponents?.queryItems = queryItems
