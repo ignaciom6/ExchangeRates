@@ -23,33 +23,20 @@ class ERExchangeListViewController: UIViewController {
         tableView.tableFooterView = UIView()
         tableView.allowsSelection = false
         
-        requestExchangeRatesWithInterval()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         
         self.showSpinner()
+        requestExchangeRatesWithInterval()
         
-        NotificationCenter.default.addObserver(self, selector: #selector(self.updateArrayOfExchanges), name:NSNotification.Name(rawValue: ERConstants.kCurrenciesSelectedNotification), object: nil)
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(true)
         
-        NotificationCenter.default.removeObserver(self)
         timer.invalidate()
-    }
-    
-    @objc func updateArrayOfExchanges(_ notification: NSNotification)
-    {
-        DispatchQueue.main.async {
-            self.showSpinner()
-        }
-        
-        if let pair = notification.userInfo?[ERConstants.kCurrencyPair] as? String {
-            ERCurrencyUtils.updateCurrencies(pair: pair)
-        }
     }
     
     func requestExchangeRatesWithInterval()

@@ -12,7 +12,6 @@ struct ERConstants {
     static let kCurrenciesPairs = "currenciesPairs"
     static let kCurrencyPair = "currencyPair"
     static let kInitialViewToExchangeListSegue = "InitialViewToExchangeListSegue"
-    static let kCurrenciesSelectedNotification = "CurrenciesSelected"
     static let kCurrenciesFile = "currencies"
     static let kJsonType = "json"
     static let kPairOfCurrencies = 2

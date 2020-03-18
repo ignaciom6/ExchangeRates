@@ -35,7 +35,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <state key="normal" title="Add currency pair"/>
                                         <connections>
-                                            <segue destination="qct-vH-6Q1" kind="presentation" id="hsG-Xh-d3E"/>
+                                            <segue destination="qct-vH-6Q1" kind="presentation" modalPresentationStyle="fullScreen" id="hsG-Xh-d3E"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose a currency pair to compare their live rates" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="olI-yp-sCW">
@@ -80,11 +80,11 @@
             <objects>
                 <viewController storyboardIdentifier="CurrenciesViewController" id="qct-vH-6Q1" customClass="ERCurrenciesViewController" customModule="ExchangeRates" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dTn-uh-gpw">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="HK5-wI-emg">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="852"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="currencyCell" id="e5e-qq-QwT" customClass="ERCurrencyTableViewCell" customModule="ExchangeRates" customModuleProvider="target">
@@ -280,7 +280,7 @@
                                         </constraints>
                                         <state key="normal" title="Add currency pair"/>
                                         <connections>
-                                            <segue destination="qct-vH-6Q1" kind="presentation" id="uem-qi-ckL"/>
+                                            <segue destination="qct-vH-6Q1" kind="presentation" modalPresentationStyle="fullScreen" id="uem-qi-ckL"/>
                                         </connections>
                                     </button>
                                 </subviews>

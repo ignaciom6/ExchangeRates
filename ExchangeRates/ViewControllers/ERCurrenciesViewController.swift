@@ -14,7 +14,7 @@ class ERCurrenciesViewController: UIViewController {
     var currenciesArray: [String] = []
     var numberOfRowsSelected = 0
     var currencyPair = ""
-    let arrayFromFileManager = ERArrayFromFileManager()
+    let arrayFileManager = ERArrayFromFileManager()
 
     override func viewDidLoad()
     {
@@ -30,7 +30,7 @@ class ERCurrenciesViewController: UIViewController {
     {
         super.viewWillAppear(true)
         
-        arrayFromFileManager.getArrayForFile(ERConstants.kCurrenciesFile, type: ERConstants.kJsonType) { (value, error) in
+        arrayFileManager.getArrayForFile(ERConstants.kCurrenciesFile, type: ERConstants.kJsonType) { (value, error) in
             if value != nil {
                 self.currenciesArray = value as! [String]
                 self.tableView.reloadData()
@@ -80,8 +80,7 @@ extension ERCurrenciesViewController: UITableViewDelegate {
             numberOfRowsSelected += 1
             currencyPair = currencyPair + self.currenciesArray[indexPath.row]
             if numberOfRowsSelected >= ERConstants.kPairOfCurrencies {
-                let currencyDict:[String: String] = [ERConstants.kCurrencyPair: currencyPair]
-                NotificationCenter.default.post(name: NSNotification.Name(rawValue: ERConstants.kCurrenciesSelectedNotification), object: nil, userInfo: currencyDict)
+                ERCurrencyUtils.updateCurrencies(pair: currencyPair)
                 dismiss(animated: true, completion: nil)
             }
             
